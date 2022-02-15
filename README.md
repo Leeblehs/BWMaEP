@@ -1,1 +1,1 @@
-# British-Military-Weapons-and-Equipment-Museum-
+# British Military Weapons and Equipment Museum
