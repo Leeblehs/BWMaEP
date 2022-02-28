@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840148d495f04d24894382c05ac1e1cd, type: 3}
+  m_Name: BubbleTask
+  m_EditorClassIdentifier: 
+  taskName: Bubble
+  taskDescription: Bubble bubble bubble
+  chosenType: 2
+  timeAllowed: 0
+  reward: 0
+  objecstToCollect: []
+  numberofQuestionstoAnswer: 0
+  questions: []
