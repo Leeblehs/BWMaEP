@@ -10,10 +10,12 @@ public class Quiz : MonoBehaviour
     [SerializeField] PlayerUI playerUIRef;
     [HideInInspector]public TaskBase thisTask;
     QuestionBase[] questions;
+    [SerializeField] DeskTaskUI deskUIref;
     int time;
     int correctAnswer;
     int questionIndex = 0;
     int thisReward;
+    [HideInInspector] public int taskNumber;
     Coroutine timer = null;
 
     
@@ -52,6 +54,7 @@ public class Quiz : MonoBehaviour
                 Debug.Log("All questions answered!");
                 playerUIRef.AddCoins(thisReward);
                 playerUIRef.StopCoroutine(timer);
+                deskUIref.completedTasks[taskNumber] = true;
             }
             else
             {

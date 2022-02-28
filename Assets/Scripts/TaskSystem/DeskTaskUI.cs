@@ -13,6 +13,7 @@ public class DeskTaskUI : MonoBehaviour
 
     [Header ("Reference to all tasks")]
     [SerializeField] TaskBase[] tasks;
+    [HideInInspector] public bool[] completedTasks;
     
     
     string[] taskNames;
@@ -27,7 +28,7 @@ public class DeskTaskUI : MonoBehaviour
 
     private void Start()
     {
-        
+        completedTasks = new bool[tasks.Length];
         setButtonText(0,numPerPage); // initial initialisation will show the first 3 tasks on the first 3 buttons
     }
     public void NextPage() //Gets the next page of tasks to choose from
@@ -66,37 +67,43 @@ public class DeskTaskUI : MonoBehaviour
     //This function is placed on buttons in the inspector
     public void showDescription(int whichButton) //gets all of the information for the task to display on screen. Which button is the button pressed
     {
-        //first, remove the task selection ui and add the task description ui
-        taskSelectionUI.SetActive(false);
-        taskDescriptionUI.SetActive(true);
-
-        //Gets the title
-        taskInfotextRefs[0].text = buttontextRefs[whichButton].text;
         //gets a new int variable based on the task chosen by button clicked + the starting point to get the right task within the array of tasks above
         currentTask = currentStart + whichButton;
-
-        //gets the task description using the method above
-        buttontextRefs[whichButton].text = tasks[currentTask].taskDescription;
-        
-        taskInfotextRefs[1].text = buttontextRefs[whichButton].text;
-
-        //a switch statement for the different task types. More can be added at a later date as design progresses
-        switch (tasks[currentTask].chosenType)
+        if (!completedTasks[currentTask])
         {
-            case 1: //For collecting items
+            //first, remove the task selection ui and add the task description ui
+            taskSelectionUI.SetActive(false);
+            taskDescriptionUI.SetActive(true);
 
-                break;
-            case 2: //For questions
-               //create some local variables to use below
-               int localNumQ = NumQuestionsGet(currentTask);
-               int localTime = TimeGet(currentTask);
-               int localreward = RewardGet(currentTask);
-                //taskinfoTextRefs is an array so we just have to change a number rather than remember a lot of variabl names!
-                // string.format is clearer than a lot of "" + "" + .... etc
-               taskInfotextRefs[2].text = string.Format("Answer {0} questions in {1} seconds!", localNumQ.ToString(), localTime.ToString()); 
-               taskInfotextRefs[3].text = string.Format("Reward: {0} Coins", localreward.ToString());
+            //Gets the title
+            taskInfotextRefs[0].text = buttontextRefs[whichButton].text;
+            
 
-               break;
+            //gets the task description using the method above
+            buttontextRefs[whichButton].text = tasks[currentTask].taskDescription;
+
+            taskInfotextRefs[1].text = buttontextRefs[whichButton].text;
+
+            //a switch statement for the different task types. More can be added at a later date as design progresses
+            switch (tasks[currentTask].chosenType)
+            {
+                case 1: //For collecting items
+
+                    break;
+                case 2: //For questions
+                        //create some local variables to use below
+                    int localNumQ = NumQuestionsGet(currentTask);
+                    int localTime = TimeGet(currentTask);
+                    int localreward = RewardGet(currentTask);
+                    //taskinfoTextRefs is an array so we just have to change a number rather than remember a lot of variabl names!
+                    // string.format is clearer than a lot of "" + "" + .... etc
+                    taskInfotextRefs[2].text = string.Format("Answer {0} questions in {1} seconds!", localNumQ.ToString(), localTime.ToString());
+                    taskInfotextRefs[3].text = string.Format("Reward: {0} Coins", localreward.ToString());
+
+                    break;
+            }
+
+        
         }
        
     }
@@ -138,9 +145,10 @@ public class DeskTaskUI : MonoBehaviour
             case 2: //For questions set the data for the player to access for the quiz
                 quizcodeRef.thisTask = tasks[currentTask];
                 quizcodeRef.SetData();
+                quizcodeRef.taskNumber = currentTask;
                 taskDescriptionUI.SetActive(false);
                 quizscreenRef.SetActive(true);
-
+                
                 break;
         }
     }
