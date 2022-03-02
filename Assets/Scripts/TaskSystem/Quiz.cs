@@ -9,6 +9,7 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] answerTextRefs;
     [SerializeField] PlayerUI playerUIRef;
     [HideInInspector]public TaskBase thisTask;
+    [SerializeField] GameObject quizObjectRef;
     QuestionBase[] questions;
     [SerializeField] DeskTaskUI deskUIref;
     int time;
@@ -55,6 +56,8 @@ public class Quiz : MonoBehaviour
                 playerUIRef.AddCoins(thisReward);
                 playerUIRef.StopCoroutine(timer);
                 deskUIref.completedTasks[taskNumber] = true;
+                deskUIref.taskSelectionUI.SetActive(true);
+                this.gameObject.SetActive(false);
             }
             else
             {

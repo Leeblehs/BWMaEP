@@ -8,7 +8,7 @@ public class DeskTaskUI : MonoBehaviour
     [Header ("References to UI")]
     [SerializeField] TextMeshProUGUI[] buttontextRefs;  //This is an array so more buttons can be added, to display say 5 buttons or even a square grid if wanted.
     [SerializeField] TextMeshProUGUI[] taskInfotextRefs;
-    [SerializeField] GameObject taskSelectionUI, taskDescriptionUI, quizscreenRef; //For setting active on ui elements, to switch which ui canvas is visible.
+    public GameObject taskSelectionUI, taskDescriptionUI, quizscreenRef; //For setting active on ui elements, to switch which ui canvas is visible.
     [SerializeField] Quiz quizcodeRef;
 
     [Header ("Reference to all tasks")]
