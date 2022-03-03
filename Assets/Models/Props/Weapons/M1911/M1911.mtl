@@ -1,0 +1,69 @@
+#
+# Bunkspeed OBJ Material File
+# http://www.bunkspeed.com
+#
+
+newmtl machined_steel
+Kd 0.6470588 0.6196079 0.5882353
+Ks 0.6470588 0.6196079 0.5882353
+map_bump -bm 2.032 C:\Users\Richard\Desktop\dented_n.dds
+bump C:\Users\Richard\Desktop\dented_n.dds
+illum 2
+Ns 2.917676
+
+newmtl satin_finish_stainless_steel
+Kd 0.3176471 0.3176471 0.3176471
+Ks 0.3176471 0.3176471 0.3176471
+illum 2
+Ns 9.999999
+
+newmtl machined_steel-2
+Kd 0.6470588 0.6196079 0.5882353
+Ks 0.6470588 0.6196079 0.5882353
+map_bump -bm 2.032 C:\Users\Richard\Desktop\dented_n.dds
+bump C:\Users\Richard\Desktop\dented_n.dds
+illum 2
+Ns 2.917676
+
+newmtl matte_brass
+Kd 0.9490196 0.7607843 0.1803922
+Ks 0.9490196 0.7607843 0.1803922
+illum 2
+Ns 1.486486
+
+newmtl matte_copper
+Kd 0.8392157 0.4509804 0.3882353
+Ks 0.8392157 0.4509804 0.3882353
+illum 2
+Ns 1.486486
+
+newmtl unfinished_mahogany_2d
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\unfinished mahogany.jpg
+Ks 0.5 0.5 0.5
+map_bump -bm 2 C:\Users\Richard\Desktop\mahogany_n.dds
+bump C:\Users\Richard\Desktop\mahogany_n.dds
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_endgrain
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany endgrain.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_steel
+Kd 0.7764706 0.7568628 0.7372549
+Ks 0.7764706 0.7568628 0.7372549
+illum 2
+Ns 99.90109
+
+newmtl burnished_steel
+Kd 0.3176471 0.3176471 0.3176471
+Ks 0.3176471 0.3176471 0.3176471
+map_Ks C:\Users\Richard\Desktop\diffuse_burnished.dds
+map_bump -bm 0.5 C:\Users\Richard\Desktop\swburnished_bump.jpg
+bump C:\Users\Richard\Desktop\swburnished_bump.jpg
+illum 2
+Ns 6.954887
