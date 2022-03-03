@@ -1,0 +1,80 @@
+#
+# Bunkspeed OBJ Material File
+# http://www.bunkspeed.com
+#
+
+newmtl satin_finish_stainless_steel
+Kd 0 0 0
+Ks 0 0 0
+illum 2
+Ns 4.218858
+
+newmtl polished_mahogany_2d
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-2
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-3
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-4
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-5
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-6
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-7
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-8
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-9
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl polished_mahogany_2d-10
+Kd 1 1 1
+map_Kd C:\Users\Richard\Desktop\polished mahogany.jpg
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
