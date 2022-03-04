@@ -7,7 +7,7 @@ public class DeskTrigger : MonoBehaviour
     [SerializeField] GameObject UIRef;
     [SerializeField] GameObject[] otherUI;
     [SerializeField] GameObject newCamera;
-    [SerializeField] CameraControl playerCodeRef;
+    [SerializeField] MovementRigidbody playerCodeRef;
     public bool inArea;
   
 
@@ -18,8 +18,8 @@ public class DeskTrigger : MonoBehaviour
         {
             Debug.Log("Pressed E in area of " + gameObject.name);
             UIRef.SetActive(true);
-            playerCodeRef.SwitchCam(newCamera);
-            playerCodeRef.allowMove = false;
+            //playerCodeRef.SwitchCam(newCamera); -- will need to be modified and added to player movement code
+            //playerCodeRef.allowMove = false;
             
             foreach(GameObject othersToDisable in otherUI)
             {
@@ -31,9 +31,9 @@ public class DeskTrigger : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && inArea)
         {
             UIRef.SetActive(false);
-            playerCodeRef.ResetCam(newCamera);
-            playerCodeRef.allowMove = false;
-            playerCodeRef.allowMove = true;
+            //playerCodeRef.ResetCam(newCamera);
+            //playerCodeRef.allowMove = false;
+            //playerCodeRef.allowMove = true;
 
         }
 
