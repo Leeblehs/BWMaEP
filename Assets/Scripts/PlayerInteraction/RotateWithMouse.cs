@@ -35,7 +35,7 @@ public class RotateWithMouse : MonoBehaviour
             Ray ray = cam.ScreenPointToRay(Input.mousePosition); //Screenpoint from camera forward where cursor is
             if (!currentlyInteracting)
             {
-                if (Physics.Raycast(ray, out hit, 50f)) // if there is a collision with ray under 100f in distance
+                if (Physics.Raycast(ray, out hit, 1f)) // if there is a collision with ray under 100f in distance
                 {
                     if (hit.transform != null && hit.collider.tag == "Interactable") //object transform exists
                     {
@@ -59,7 +59,7 @@ public class RotateWithMouse : MonoBehaviour
 
             currentlyInteracting = false;
         }
-        
+
 
         /*
         if (Input.GetKeyDown(KeyCode.E))
@@ -108,14 +108,15 @@ public class RotateWithMouse : MonoBehaviour
             
         }
         */
-
-        ObjecttoRotate.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * rotSpeed * Time.deltaTime);
+        
+        ObjecttoRotate.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * rotSpeed * Time.deltaTime);
+        
 
     }
 
     void SnapToCamera()
     {
-        
+        //Vector3 offset = new Vector3(0, -0.5f, 0);
         ObjecttoRotate.transform.position = snapToTransform.position;
         
 
