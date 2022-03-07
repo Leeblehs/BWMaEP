@@ -37,7 +37,7 @@ public class DeskTrigger : MonoBehaviour
             UIRef.SetActive(false);
             playerCam.SetActive(true);
             newCamera.SetActive(false);
-            
+            otherUI[1].SetActive(true);
             playerCodeRef.allowMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
