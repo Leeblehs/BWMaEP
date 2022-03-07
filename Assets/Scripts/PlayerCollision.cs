@@ -6,6 +6,8 @@ public class PlayerCollision : MonoBehaviour
 {
     bool inDeskArea;
     [SerializeField] DeskTrigger deskTriggerRef;
+    
+
     private void Start()
     {
         

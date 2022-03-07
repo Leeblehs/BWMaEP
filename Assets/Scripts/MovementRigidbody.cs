@@ -18,12 +18,18 @@ public class MovementRigidbody : MonoBehaviour
     public bool isRunning = false;
     [Range(1,10)]
     public float runningMultiplier = 2;
+    public bool allowMove = true; //Added by John
 
     void Update(){
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+        if (allowMove)
+        {
+            movement = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
+        }
+        
     }
 
     void FixedUpdate(){
+        
         ConfigureMovement(movement);
     }
 
