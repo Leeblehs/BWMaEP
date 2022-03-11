@@ -10,8 +10,9 @@ public class Quiz : MonoBehaviour
     [SerializeField] PlayerUI playerUIRef;
     [HideInInspector]public TaskBase thisTask;
     [SerializeField] GameObject quizObjectRef;
-    QuestionBase[] questions;
+     QuestionBase[] questions;
     [SerializeField] DeskTaskUI deskUIref;
+    [SerializeField] DeskTrigger deskTriggerRef;
     int time;
     int correctAnswer;
     int questionIndex = 0;
@@ -36,6 +37,7 @@ public class Quiz : MonoBehaviour
     {
         QuestionBase currentQuestion = questions[questionIndex];
         questionText.text = currentQuestion.Question;
+        
         answerTextRefs[0].text = currentQuestion.Answer1;
         answerTextRefs[1].text = currentQuestion.Answer2;
         answerTextRefs[2].text = currentQuestion.Answer3;
@@ -57,7 +59,9 @@ public class Quiz : MonoBehaviour
                 playerUIRef.StopCoroutine(timer);
                 deskUIref.completedTasks[taskNumber] = true;
                 deskUIref.taskSelectionUI.SetActive(true);
-                this.gameObject.SetActive(false);
+                deskTriggerRef.ReturnPlayerControl();
+                quizObjectRef.SetActive(false);
+
             }
             else
             {

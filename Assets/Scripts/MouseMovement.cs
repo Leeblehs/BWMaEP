@@ -19,6 +19,8 @@ public class MouseMovement : MonoBehaviour
     [SerializeField] private float xRotation;
     [SerializeField] private float yRotation;
 
+    public bool allowMouseMove = true;
+
     void Start(){
         cam = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -35,14 +37,18 @@ public class MouseMovement : MonoBehaviour
     }
 
     void configureRotation(){
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        if (allowMouseMove)
+        {
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
-        //Not inverse Rotation
-        xRotation -= mouseY * rotateXSpeed * Time.deltaTime;
-        yRotation += mouseX * rotateYSpeed * Time.deltaTime;
+            //Not inverse Rotation
+            xRotation -= mouseY * rotateXSpeed * Time.deltaTime;
+            yRotation += mouseX * rotateYSpeed * Time.deltaTime;
 
-        xRotation = Mathf.Clamp(xRotation, rotateYMin, rotateYMax);
+            xRotation = Mathf.Clamp(xRotation, rotateYMin, rotateYMax);
+        }
+        
         
     }
 }
