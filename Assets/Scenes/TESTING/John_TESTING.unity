@@ -526,11 +526,10 @@ MonoBehaviour:
   infotext1Ref: {fileID: 813050886}
   infotext2Ref: {fileID: 813050886}
   infotext3Ref: {fileID: 813050886}
-  thisname: Cool Gun
-  info1: This gun was created for war. This is very bad! Don't worry though, because
-    the war it was used in ended over 75 years ago!
-  info2: 
-  info3: 
+  thisname: Blocky Mc Block
+  info1: This is a nice concrete(?) block! It rotates real nice!
+  info2: This is a nice concrete(?) block! It rotates real nice!
+  info3: This is a nice concrete(?) block! It rotates real nice!
 --- !u!114 &813050886 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4143841483459658485, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
@@ -557,6 +556,26 @@ PrefabInstance:
       propertyPath: statsViewer
       value: 
       objectReference: {fileID: 700050723}
+    - target: {fileID: 1864556591, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.421
+      objectReference: {fileID: 0}
+    - target: {fileID: 1864556591, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 711352664097225641, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 711352664097225641, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 268
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672930895086369600, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 158.87
+      objectReference: {fileID: 0}
     - target: {fileID: 2978710281589653453, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
@@ -583,23 +602,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.464122
+      value: 5.33
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.681578
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.73174554
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -607,7 +626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 94.066
       objectReference: {fileID: 0}
     - target: {fileID: 3916231768497174348, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -619,7 +638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5247767174067569920, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8799448804478774957, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
@@ -1227,6 +1246,34 @@ MonoBehaviour:
   timerUIRef: {fileID: 520489193}
   timeOverText: {fileID: 1616384764}
   coins: 0
+--- !u!1 &1777784488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2602234778545292384, guid: 6a0541b2325e21f40b706f0b0eebdb3f, type: 3}
+  m_PrefabInstance: {fileID: 1530663651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1777784491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777784488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b50b4346644ed4d8c995bf9c66835d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameRef: {fileID: 281277114}
+  infotext1Ref: {fileID: 813050886}
+  infotext2Ref: {fileID: 813050886}
+  infotext3Ref: {fileID: 813050886}
+  thisname: Cool Gun
+  info1: This gun was created for war. This is very bad! Don't worry though, because
+    the war it was used in ended over 75 years ago!
+  info2: This gun was created for war. This is very bad! Don't worry though, because
+    the war it was used in ended over 75 years ago!
+  info3: This gun was created for war. This is very bad! Don't worry though, because
+    the war it was used in ended over 75 years ago!
 --- !u!114 &1998385802 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7892301457728190902, guid: 97aea89e0771bbf41bc3c03ef6813181, type: 3}

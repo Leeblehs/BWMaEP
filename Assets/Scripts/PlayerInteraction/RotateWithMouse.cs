@@ -41,7 +41,7 @@ public class RotateWithMouse : MonoBehaviour
                 {
                     if (hit.transform != null && hit.collider.tag == "Interactable") //object transform exists
                     {
-
+                        Debug.Log("Interact1");
                         setCurrentObject(hit);
                         playerMoveRef.allowMove = false;
                         mouseMoveRef.allowMouseMove = false;
@@ -49,6 +49,7 @@ public class RotateWithMouse : MonoBehaviour
                         currentlyInteracting = true;
                         objectStatsRef = hit.collider.gameObject.GetComponent<ObjectStats>();
                         objectStatsRef.ShowStats();
+                        
                         statsViewer.SetActive(true);
 
                     }

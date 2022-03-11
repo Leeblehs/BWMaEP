@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    bool inDeskArea;
+    bool inDeskArea = false;
     [SerializeField] DeskTrigger deskTriggerRef;
     
 
