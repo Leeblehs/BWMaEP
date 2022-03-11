@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RotateWithMouse : MonoBehaviour
 {
+    [SerializeField] GameObject statsViewer;
     // Start is called before the first frame update
     [SerializeField] float rotSpeed = 1f;
     [SerializeField] GameObject ObjecttoRotate;
@@ -13,6 +14,7 @@ public class RotateWithMouse : MonoBehaviour
     [SerializeField] MovementRigidbody playerMoveRef;
     [SerializeField] MouseMovement mouseMoveRef;
     bool currentlyInteracting = false;
+    ObjectStats objectStatsRef;
     
     ObjectStats currentObjectStats;
     void Start()
@@ -45,6 +47,10 @@ public class RotateWithMouse : MonoBehaviour
                         mouseMoveRef.allowMouseMove = false;
                         
                         currentlyInteracting = true;
+                        objectStatsRef = hit.collider.gameObject.GetComponent<ObjectStats>();
+                        objectStatsRef.ShowStats();
+                        statsViewer.SetActive(true);
+
                     }
                 }
             }   
@@ -58,8 +64,10 @@ public class RotateWithMouse : MonoBehaviour
             mouseMoveRef.allowMouseMove = true;
 
             currentlyInteracting = false;
+            statsViewer.SetActive(false);
         }
 
+        // old code for swapping between items in an array
 
         /*
         if (Input.GetKeyDown(KeyCode.E))

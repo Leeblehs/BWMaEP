@@ -23,4 +23,6 @@ public class ObjectStats : MonoBehaviour
         infotext2Ref.text = info2;
         infotext3Ref.text = info3;
     }
+
+    
 }

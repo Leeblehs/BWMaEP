@@ -9,7 +9,7 @@ public class DeskTrigger : MonoBehaviour
     [SerializeField] GameObject newCamera;
     [SerializeField] GameObject playerCam;
     [SerializeField] MovementRigidbody playerCodeRef;
-    public bool inArea;
+    public bool inArea = false;
   
 
     // Update is called once per frame
@@ -34,21 +34,30 @@ public class DeskTrigger : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && inArea)
         {
-            UIRef.SetActive(false);
-            playerCam.SetActive(true);
-            newCamera.SetActive(false);
-            otherUI[1].SetActive(true);
-            playerCodeRef.allowMove = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            ReturnPlayerControl(); 
 
         }
+
+        
 
 
 
     }
 
-    
+    public void ReturnPlayerControl()
+    {
+        UIRef.SetActive(false);
+        playerCam.SetActive(true);
+        newCamera.SetActive(false);
+        foreach(GameObject i in otherUI)
+        {
+            i.SetActive(false);
+        }
+        
+        playerCodeRef.allowMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
 
 }

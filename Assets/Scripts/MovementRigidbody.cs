@@ -18,7 +18,7 @@ public class MovementRigidbody : MonoBehaviour
     public bool isRunning = false;
     [Range(1,10)]
     public float runningMultiplier = 2;
-    public bool allowMove = true; //Added by John
+    public bool allowMove = true; //Added by John to stop movement when viewing objects or at the task desk
 
     void Update(){
         if (allowMove)
@@ -64,4 +64,6 @@ public class MovementRigidbody : MonoBehaviour
             isRunning = false;
         }
     }
+
+    
 }
