@@ -10,7 +10,7 @@ public class DeskTaskUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] taskInfotextRefs;
     public GameObject taskSelectionUI, taskDescriptionUI, quizscreenRef; //For setting active on ui elements, to switch which ui canvas is visible.
     [SerializeField] Quiz quizcodeRef;
-
+    
     [Header ("Reference to all tasks")]
     [SerializeField] TaskBase[] tasks;
     [HideInInspector] public bool[] completedTasks;
@@ -58,7 +58,7 @@ public class DeskTaskUI : MonoBehaviour
         //This for loop gets every one of the buttons on the screen and applies a task to it in sequence
         for (int currentButton = currentStart; currentButton < currentEnd; currentButton++)
         {
-            
+            Debug.Log(currentButton);
             buttontextRefs[thisButton].text = tasks[currentButton].taskName;
             thisButton++;
         }
@@ -143,12 +143,13 @@ public class DeskTaskUI : MonoBehaviour
 
                 break;
             case 2: //For questions set the data for the player to access for the quiz
+                Debug.Log("Started");
                 quizcodeRef.thisTask = tasks[currentTask];
                 quizcodeRef.SetData();
                 quizcodeRef.taskNumber = currentTask;
                 taskDescriptionUI.SetActive(false);
                 quizscreenRef.SetActive(true);
-                
+                Debug.Log("Done");
                 break;
         }
     }

@@ -247,6 +247,7 @@ public class CameraControl : MonoBehaviour
         }
     }
 
+    
     public void SwitchCam(GameObject newCam)
     {
         playerCam.gameObject.SetActive(false);
