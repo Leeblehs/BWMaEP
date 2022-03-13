@@ -3,7 +3,17 @@ guid: 01f1ed6945cefd243ab2be136c92dfae
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potted_plant_02_leaves
+    second: {fileID: 2100000, guid: 9b0e35f49b8464d40b1d6d9fbc2e2bb4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potted_plant_02_pot
+    second: {fileID: 2100000, guid: 2745f8f7166556c4fa7aa8af44db9fcb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -88,11 +98,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
