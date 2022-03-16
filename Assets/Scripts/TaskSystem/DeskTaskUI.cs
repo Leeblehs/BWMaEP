@@ -14,6 +14,7 @@ public class DeskTaskUI : MonoBehaviour
     [Header ("Reference to all tasks")]
     [SerializeField] TaskBase[] tasks;
     [HideInInspector] public bool[] completedTasks;
+    [SerializeField] DeskTrigger deskTriggerRef;
     
     
     string[] taskNames;
@@ -24,7 +25,12 @@ public class DeskTaskUI : MonoBehaviour
     int numPerPage = 3;
     int currentTask;
     
-
+    public void BackButton() //This goes back from the task info screen to the task choice screen. Could be used in other cases to switch which ui is dispalyed
+    {
+        taskSelectionUI.SetActive(true);
+        taskDescriptionUI.SetActive(false);
+        setButtonText(0, numPerPage);
+    }
 
     private void Start()
     {
@@ -149,6 +155,7 @@ public class DeskTaskUI : MonoBehaviour
                 quizcodeRef.taskNumber = currentTask;
                 taskDescriptionUI.SetActive(false);
                 quizscreenRef.SetActive(true);
+                deskTriggerRef.inTask = true;
                 Debug.Log("Done");
                 break;
         }

@@ -57,8 +57,9 @@ public class RotateWithMouse : MonoBehaviour
             }   
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && currentlyInteracting)
         {
+            
             GoBacktoOldLocation();
             ObjecttoRotate = null;
             playerMoveRef.allowMove = true;
@@ -117,8 +118,11 @@ public class RotateWithMouse : MonoBehaviour
             
         }
         */
+        if (currentlyInteracting)
+        {
+            ObjecttoRotate.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * rotSpeed * Time.deltaTime);
+        }
         
-        ObjecttoRotate.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * rotSpeed * Time.deltaTime);
         
 
     }

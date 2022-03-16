@@ -9,6 +9,7 @@ public class DeskTrigger : MonoBehaviour
     [SerializeField] GameObject newCamera;
     [SerializeField] GameObject playerCam;
     [SerializeField] MovementRigidbody playerCodeRef;
+    public bool inTask = false;
     public bool inArea = false;
   
 
@@ -17,27 +18,50 @@ public class DeskTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && inArea)
         {
-            Debug.Log("Pressed E in area of " + gameObject.name);
-            UIRef.SetActive(true);
+            for (int i = 0; i == otherUI.Length; i++)
+            {
+                if (inTask)
+                {
+                    if (i == 1)
+                    {
+                        continue;
+                    }
+
+                    otherUI[i].SetActive(false);
+
+                }
+                otherUI[i].SetActive(false);
+
+
+            }
+            if (!inTask)
+            {
+                UIRef.SetActive(true);
+            }
+           
+            
+            
             playerCam.SetActive(false);
             newCamera.SetActive(true);
             playerCodeRef.allowMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            foreach (GameObject othersToDisable in otherUI)
-            {
-                othersToDisable.SetActive(false);
-            }
+            
+
+
+
 
         }
 
         if (Input.GetKeyDown(KeyCode.Escape) && inArea)
         {
-            ReturnPlayerControl(); 
+            Debug.Log("InTask: " + inTask);
+            ReturnPlayerControl();
+            
 
         }
-
+        
         
 
 
@@ -47,17 +71,40 @@ public class DeskTrigger : MonoBehaviour
     public void ReturnPlayerControl()
     {
         UIRef.SetActive(false);
+        
+        
         playerCam.SetActive(true);
         newCamera.SetActive(false);
-        foreach(GameObject i in otherUI)
+
+
+
+
+
+
+        for (int i = 0; i == otherUI.Length; i++)
         {
-            i.SetActive(false);
+            if (inTask)
+            {
+                if (i == 1)
+                {
+                    continue;
+                }
+
+                otherUI[i].SetActive(false);
+
+            }
+            otherUI[i].SetActive(false);
+
+
         }
-        
         playerCodeRef.allowMove = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
+    
+
+
 
 
 }
