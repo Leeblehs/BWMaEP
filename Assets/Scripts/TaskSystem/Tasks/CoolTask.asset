@@ -15,7 +15,7 @@ MonoBehaviour:
   taskName: Cool
   taskDescription: Pretty good
   chosenType: 2
-  timeAllowed: 10
+  timeAllowed: 90
   reward: 100
   objecstToCollect: []
   numberofQuestionstoAnswer: 2

@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlayerUI : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     float time;
     bool finished;
     [SerializeField] TextMeshProUGUI coinstextRef;

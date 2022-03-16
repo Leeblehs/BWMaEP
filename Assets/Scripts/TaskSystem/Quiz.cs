@@ -9,7 +9,7 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] answerTextRefs;
     [SerializeField] PlayerUI playerUIRef;
     [HideInInspector]public TaskBase thisTask;
-    [SerializeField] GameObject quizObjectRef;
+    [SerializeField] GameObject quizObjectRef, playerUIObject;
      QuestionBase[] questions;
     [SerializeField] DeskTaskUI deskUIref;
     [SerializeField] DeskTrigger deskTriggerRef;
@@ -19,18 +19,22 @@ public class Quiz : MonoBehaviour
     int thisReward;
     [HideInInspector] public int taskNumber;
     Coroutine timer = null;
-
+    bool lookingAt = false;
     
 
+    
+    
     public void SetData()
     {
+        lookingAt = true;
+        playerUIObject.SetActive(true);
         questions = thisTask.questions;
-        
+        deskTriggerRef.inTask = true;
         time = thisTask.timeAllowed;
         thisReward = thisTask.reward;
         
        timer = playerUIRef.StartCoroutine(playerUIRef.Timer(time));
-        GetQuestion();
+       GetQuestion();
     }
 
     void GetQuestion()
@@ -56,11 +60,16 @@ public class Quiz : MonoBehaviour
             {
                 Debug.Log("All questions answered!");
                 playerUIRef.AddCoins(thisReward);
+                
                 playerUIRef.StopCoroutine(timer);
+                
                 deskUIref.completedTasks[taskNumber] = true;
+                
                 deskUIref.taskSelectionUI.SetActive(true);
-                deskTriggerRef.ReturnPlayerControl();
+                
+                
                 quizObjectRef.SetActive(false);
+                deskTriggerRef.ReturnPlayerControl();
 
             }
             else
@@ -77,5 +86,7 @@ public class Quiz : MonoBehaviour
     }
 
     
+
+
 
 }
