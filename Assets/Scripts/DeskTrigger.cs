@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class DeskTrigger : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] GameObject UIRef;
     [SerializeField] GameObject[] otherUI;
     [SerializeField] GameObject newCamera;
     [SerializeField] GameObject playerCam;
     [SerializeField] MovementRigidbody playerCodeRef;
-    public bool inTask = false;
-    public bool inArea = false;
+    
+    //Both of these variables need to be public but don't need to be edited in the inspector
+    [HideInInspector] public bool inTask = false;
+    [HideInInspector] public bool inArea = false;
   
 
     // Update is called once per frame
@@ -18,31 +21,18 @@ public class DeskTrigger : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && inArea)
         {
-            for (int i = 0; i == otherUI.Length; i++)
-            {
-                if (inTask)
-                {
-                    if (i == 1)
-                    {
-                        continue;
-                    }
-
-                    otherUI[i].SetActive(false);
-
-                }
-                otherUI[i].SetActive(false);
-
-
-            }
+            RemoveUI();
             if (!inTask)
             {
+                //if not currently in a task, set the task choice ui to be active
                 UIRef.SetActive(true);
             }
            
-            
-            
+            //Switches camera
             playerCam.SetActive(false);
             newCamera.SetActive(true);
+
+            //Stops player movement, unlocks mouse movement and makes it visible (to allow button presses on the screen).
             playerCodeRef.allowMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -54,11 +44,10 @@ public class DeskTrigger : MonoBehaviour
 
         }
 
+        //Simply closes the ui if escape is pressed at any point (unless a quiz task is started)
         if (Input.GetKeyDown(KeyCode.Escape) && inArea)
         {
-            Debug.Log("InTask: " + inTask);
             ReturnPlayerControl();
-            
 
         }
         
@@ -71,21 +60,28 @@ public class DeskTrigger : MonoBehaviour
     public void ReturnPlayerControl()
     {
         UIRef.SetActive(false);
-        
-        
+
+        //Resets camera back to player
         playerCam.SetActive(true);
         newCamera.SetActive(false);
 
+        //Calls the remove ui function
+        RemoveUI();
 
+        //Returns movement to the player, while also hiding and locking the mouse cursor
+        playerCodeRef.allowMove = true;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
-
-
+    void RemoveUI()
+    {
 
         for (int i = 0; i == otherUI.Length; i++)
         {
             if (inTask)
             {
-                if (i == 1)
+                if (i == 1) //if in task is true and is currently on the quiz screen (otherUI[1]) it will skip removing the ui from the desk panel so players can move around and find info for questions
                 {
                     continue;
                 }
@@ -97,12 +93,7 @@ public class DeskTrigger : MonoBehaviour
 
 
         }
-        playerCodeRef.allowMove = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
-
-    
 
 
 

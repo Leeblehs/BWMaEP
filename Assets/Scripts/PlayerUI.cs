@@ -12,21 +12,11 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI timerUIRef;
     [SerializeField] GameObject timeOverText;
 
-    [HideInInspector] public int coins;
+    [HideInInspector] public int coins; 
     
-    void Start()
-    {
-        
-    }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
-
-    public IEnumerator Timer(float timeInput) //timer counts down from a set time from each task.
+    public IEnumerator Timer(float timeInput) //timer counts down from a set time from each task. It is public so it can be started and stopped from other scripts.
     {
         time = timeInput;
         while (time > 0)

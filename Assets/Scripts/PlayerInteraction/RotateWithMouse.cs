@@ -17,6 +17,7 @@ public class RotateWithMouse : MonoBehaviour
     ObjectStats objectStatsRef;
     
     ObjectStats currentObjectStats;
+    string interactableTag = "Interactable"; 
     void Start()
     {
         //AccessData();
@@ -35,21 +36,23 @@ public class RotateWithMouse : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = cam.ScreenPointToRay(Input.mousePosition); //Screenpoint from camera forward where cursor is
-            if (!currentlyInteracting)
+            if (!currentlyInteracting) //Will only call if currently interacting is true
             {
                 if (Physics.Raycast(ray, out hit, 1f)) // if there is a collision with ray under 100f in distance
                 {
-                    if (hit.transform != null && hit.collider.tag == "Interactable") //object transform exists
+                    if (hit.transform != null && hit.collider.tag == interactableTag) //object transform exists and has the right tag
                     {
-                        Debug.Log("Interact1");
-                        setCurrentObject(hit);
+                       
+                        setCurrentObject(hit); //calls the function with the input being the object we hit with the raycast
+                        
+                        //Disable player movement so that they can't move while inspecting an object
                         playerMoveRef.allowMove = false;
                         mouseMoveRef.allowMouseMove = false;
                         
-                        currentlyInteracting = true;
-                        objectStatsRef = hit.collider.gameObject.GetComponent<ObjectStats>();
-                        objectStatsRef.ShowStats();
-                        
+                        currentlyInteracting = true; //Setting to true stops this code from running once the player is interacting
+                       
+
+                        AccessData(hit);
                         statsViewer.SetActive(true);
 
                     }
@@ -57,17 +60,19 @@ public class RotateWithMouse : MonoBehaviour
             }   
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && currentlyInteracting)
+        if (Input.GetKeyDown(KeyCode.Escape) && currentlyInteracting) //Put the item back if escape is pressed
         {
             
             GoBacktoOldLocation();
-            ObjecttoRotate = null;
-            playerMoveRef.allowMove = true;
-            mouseMoveRef.allowMouseMove = true;
+            ObjecttoRotate = null; //removes reference to object
+            playerMoveRef.allowMove = true; //allows the player to move aain
+            mouseMoveRef.allowMouseMove = true; //allows mouse movement again
 
-            currentlyInteracting = false;
-            statsViewer.SetActive(false);
+            currentlyInteracting = false; 
+            statsViewer.SetActive(false); //Removes the ui that displays object info
         }
+
+        #region Old Swap Code
 
         // old code for swapping between items in an array
 
@@ -118,6 +123,9 @@ public class RotateWithMouse : MonoBehaviour
             
         }
         */
+
+        #endregion //This code was used to switch between multiple objects with Q and E, but only one object can be interacted with at a time in the current setup so became redundant
+
         if (currentlyInteracting)
         {
             ObjecttoRotate.transform.Rotate(new Vector3(-Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * rotSpeed * Time.deltaTime);
@@ -129,7 +137,7 @@ public class RotateWithMouse : MonoBehaviour
 
     void SnapToCamera()
     {
-        //Vector3 offset = new Vector3(0, -0.5f, 0);
+        //Vector3 offset = new Vector3(0, -0.5f, 0); // a small offset for testing purposes
         ObjecttoRotate.transform.position = snapToTransform.position;
         
 
@@ -143,10 +151,10 @@ public class RotateWithMouse : MonoBehaviour
         ObjecttoRotate.transform.rotation = oldLocation.rotation;
     }
 
-    void AccessData()
+    void AccessData(RaycastHit hit)
     {
-        currentObjectStats = ObjecttoRotate.GetComponent<ObjectStats>();
-        currentObjectStats.ShowStats();
+        objectStatsRef = hit.collider.gameObject.GetComponent<ObjectStats>(); //gets object stats component
+        objectStatsRef.ShowStats(); //calls the show stats function
     }
 
     void setCurrentObject(RaycastHit hit)
