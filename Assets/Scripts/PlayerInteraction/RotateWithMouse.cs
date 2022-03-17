@@ -10,11 +10,13 @@ public class RotateWithMouse : MonoBehaviour
     [SerializeField] GameObject ObjecttoRotate;
     [SerializeField] Camera cam;
     [SerializeField] Transform snapToTransform;
-    [SerializeField] Transform oldLocation;
+    
     [SerializeField] MovementRigidbody playerMoveRef;
     [SerializeField] MouseMovement mouseMoveRef;
     bool currentlyInteracting = false;
     ObjectStats objectStatsRef;
+    Vector3 oldLocation;
+    Quaternion oldRotation;
     
     ObjectStats currentObjectStats;
     string interactableTag = "Interactable"; 
@@ -145,10 +147,9 @@ public class RotateWithMouse : MonoBehaviour
 
     void GoBacktoOldLocation()
     {
-       
 
-        ObjecttoRotate.transform.position = oldLocation.position;//oldLocations[previousObject].position;
-        ObjecttoRotate.transform.rotation = oldLocation.rotation;
+        ObjecttoRotate.transform.position = oldLocation;
+        ObjecttoRotate.transform.rotation = oldRotation;
     }
 
     void AccessData(RaycastHit hit)
@@ -160,8 +161,9 @@ public class RotateWithMouse : MonoBehaviour
     void setCurrentObject(RaycastHit hit)
     {
         ObjecttoRotate = hit.collider.gameObject;
-        oldLocation = ObjecttoRotate.transform;
+        oldLocation = ObjecttoRotate.transform.position;
+        oldRotation = ObjecttoRotate.transform.rotation;
         SnapToCamera();
-        //AccessData();
+        
     }
 }
