@@ -10,7 +10,8 @@ public class RotateWithMouse : MonoBehaviour
     [SerializeField] GameObject ObjecttoRotate;
     [SerializeField] Camera cam;
     [SerializeField] Transform snapToTransform;
-    [SerializeField] Transform oldLocation;
+    Vector3 oldLocation;
+    Quaternion oldRotation;
     [SerializeField] MovementRigidbody playerMoveRef;
     [SerializeField] MouseMovement mouseMoveRef;
     bool currentlyInteracting = false;
@@ -67,6 +68,8 @@ public class RotateWithMouse : MonoBehaviour
 
             currentlyInteracting = false;
             statsViewer.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            
         }
 
         // old code for swapping between items in an array
@@ -137,10 +140,10 @@ public class RotateWithMouse : MonoBehaviour
 
     void GoBacktoOldLocation()
     {
-       
 
-        ObjecttoRotate.transform.position = oldLocation.position;//oldLocations[previousObject].position;
-        ObjecttoRotate.transform.rotation = oldLocation.rotation;
+        Debug.Log(oldLocation);
+        ObjecttoRotate.transform.position = oldLocation;
+        ObjecttoRotate.transform.rotation = oldRotation;
     }
 
     void AccessData()
@@ -152,7 +155,9 @@ public class RotateWithMouse : MonoBehaviour
     void setCurrentObject(RaycastHit hit)
     {
         ObjecttoRotate = hit.collider.gameObject;
-        oldLocation = ObjecttoRotate.transform;
+        oldLocation = ObjecttoRotate.transform.position;
+        oldRotation = ObjecttoRotate.transform.rotation;
+        
         SnapToCamera();
         //AccessData();
     }
