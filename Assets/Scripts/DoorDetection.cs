@@ -10,7 +10,6 @@ public class DoorDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player" && isAutomatic){
-            Debug.Log("door worked");
             doorAnimation.SetBool("Open", true);
             doorSound.Play();
         }
