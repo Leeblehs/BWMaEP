@@ -15,33 +15,40 @@ public class MouseMovement : MonoBehaviour
     public float rotateXSpeed = 90f;
     [Range(0,360)]
     public float rotateYSpeed = 90f;
-    [Range(-360,360)]
-    public float currentXRotation = 0;
-    [Range(-360,360)]
-    public float currentYRotation = -90;
+
+    [SerializeField] private float xRotation;
+    [SerializeField] private float yRotation;
+
+    public bool allowMouseMove = true;
 
     void Start(){
         cam = GetComponentInChildren<Camera>();
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        cam.transform.localRotation = Quaternion.Euler(currentXRotation, 0, 0);
-        transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
         configureRotation();
+        
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+        transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
 
     void configureRotation(){
-        float mouseX = Input.GetAxis("Mouse X");
-        float mouseY = Input.GetAxis("Mouse Y");
+        if (allowMouseMove)
+        {
+            float mouseX = Input.GetAxis("Mouse X");
+            float mouseY = Input.GetAxis("Mouse Y");
 
-        //Not inverse Rotation
-        currentXRotation -= mouseY * rotateXSpeed * Time.deltaTime;
-        currentYRotation += mouseX * rotateYSpeed * Time.deltaTime;
+            //Not inverse Rotation
+            xRotation -= mouseY * rotateXSpeed * Time.deltaTime;
+            yRotation += mouseX * rotateYSpeed * Time.deltaTime;
 
-        currentXRotation = Mathf.Clamp(currentXRotation, rotateYMin, rotateYMax);
+            xRotation = Mathf.Clamp(xRotation, rotateYMin, rotateYMax);
+        }
+        
         
     }
 }
