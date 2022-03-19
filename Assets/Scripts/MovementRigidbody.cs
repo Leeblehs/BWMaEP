@@ -29,8 +29,12 @@ public class MovementRigidbody : MonoBehaviour
     }
 
     void FixedUpdate(){
-        
-        ConfigureMovement(movement);
+
+        if (allowMove)
+        {
+            ConfigureMovement(movement);
+        }
+       
     }
 
     void ConfigureMovement(Vector3 direction){

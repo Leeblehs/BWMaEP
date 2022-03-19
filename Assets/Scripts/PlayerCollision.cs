@@ -31,4 +31,20 @@ public class PlayerCollision : MonoBehaviour
                 break;
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        switch (other.gameObject.tag) //choose an option based on tag
+        {
+            case "DeskTrigger": //if tag is "DeskTrigger"
+                if (inDeskArea)
+                {
+                    deskTriggerRef.inArea = false;
+                    inDeskArea = false;
+                }
+                break;
+
+           
+        }
+    }
 }

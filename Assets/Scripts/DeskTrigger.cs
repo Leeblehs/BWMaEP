@@ -70,6 +70,7 @@ public class DeskTrigger : MonoBehaviour
 
         //Returns movement to the player, while also hiding and locking the mouse cursor
         playerCodeRef.allowMove = true;
+        inArea = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
