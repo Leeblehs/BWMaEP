@@ -26,6 +26,7 @@ public class RadioController : MonoBehaviour
              if (Input.GetKeyDown(KeyCode.F2)) 
             {
                 PauseAudio();
+                musicalNotes.Stop();
             }
 
              if (Input.GetKeyDown(KeyCode.F3)) 
